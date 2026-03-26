@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Predictive Maintenance System</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+
+    <nav class="navbar">
+      <div class="nav-logo">SmartMaint AI</div>
+
+      <ul class="nav-links">
+        <li><a href="#" onclick="showHome()">Home</a></li>
+        <li><a href="#" onclick="showPredict()">Predict</a></li>
+        <li><a href="#" onclick="showPlots()">Plots</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <!-- HOME SECTION -->
+
+      <header id="homeSection">
+        <h1>Predictive Maintenance System</h1>
+
+        <p>Real-time Machine Health Monitoring & Failure Prediction</p>
+      </header>
+
+      <!-- PROJECT OVERVIEW -->
+
+      <div class="card">
+        <h2>Project Overview</h2>
+
+        <div class="overview-container">
+          <div class="overview-image">
+            <img
+              src="{{ url_for('static', filename='images/predictive_maintenance.png') }}"
+              alt="Predictive Maintenance System"
+            />
+          </div>
+
+          <div class="overview-text">
+            <p>
+              The IoT Predictive Maintenance System analyzes machine sensor data
+              such as temperature, pressure, and vibration to predict potential
+              machine failures before they occur. Using Machine Learning
+              algorithms and Explainable AI (SHAP), the system detects patterns
+              in sensor readings and calculates the probability of machine
+              failure. This allows industries to perform maintenance before
+              breakdowns occur, reducing downtime and improving operational
+              efficiency.
+            </p>
+
+            <p>
+              The system also provides visual insights into predictions using
+              SHAP explainability plots, enabling engineers to understand which
+              features influence failure risk the most.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- KEY FEATURES -->
+
+      <div class="card">
+        <h2>Key Features</h2>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>📡 Real-Time Sensor Monitoring</h3>
+
+            <p>
+              Monitor machine parameters like temperature, pressure, and
+              vibration.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>🤖 Machine Learning Prediction</h3>
+
+            <p>Predict machine failure probability using trained ML models.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>📊 Interactive Dashboard</h3>
+
+            <p>
+              Visualize predictions and machine health through interactive
+              charts.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>🧠 Explainable AI (SHAP)</h3>
+
+            <p>Understand which features influence the model's prediction.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>⚙️ Maintenance Recommendations</h3>
+
+            <p>Receive maintenance suggestions based on prediction results.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>📜 Prediction History</h3>
+
+            <p>Track previous predictions and sensor readings.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <!-- Input Section -->
+
+        <div class="card" id="predictSection">
+          <h2>Sensor Input</h2>
+
+          <form id="predictionForm">
+            <div class="form-group">
+              <label for="machine_id">Machine ID:</label>
+
+              <input
+                type="text"
+                id="machine_id"
+                name="machine_id"
+                value="M001"
+                required
+              />
+            </div>
+
+            <div class="sensor-inputs">
+              <div class="form-group">
+                <label for="temperature">Temperature (°C):</label>
+
+                <input
+                  type="number"
+                  id="temperature"
+                  name="temperature"
+                  value="65"
+                  min="0"
+                  max="150"
+                  step="0.1"
+                  required
+                />
+
+                <input
+                  type="range"
+                  id="temp_slider"
+                  min="0"
+                  max="150"
+                  value="65"
+                  step="0.1"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="pressure">Pressure (bar):</label>
+
+                <input
+                  type="number"
+                  id="pressure"
+                  name="pressure"
+                  value="100"
+                  min="0"
+                  max="200"
+                  step="0.1"
+                  required
+                />
+
+                <input
+                  type="range"
+                  id="pressure_slider"
+                  min="0"
+                  max="200"
+                  value="100"
+                  step="0.1"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="vibration">Vibration (mm/s):</label>
+
+                <input
+                  type="number"
+                  id="vibration"
+                  name="vibration"
+                  value="0.5"
+                  min="0"
+                  max="5"
+                  step="0.01"
+                  required
+                />
+
+                <input
+                  type="range"
+                  id="vibration_slider"
+                  min="0"
+                  max="5"
+                  value="0.5"
+                  step="0.01"
+                />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Analyze Machine Health
+            </button>
+          </form>
+        </div>
+
+        <!-- RESULTS SECTION -->
+
+        <div class="card" id="resultsSection" style="display: none">
+          <h2>Prediction Results</h2>
+
+          <div class="risk-indicator">
+            <div class="risk-level">
+              <span class="risk-label">Risk Level:</span>
+              <span class="risk-value" id="riskValue">-</span>
+            </div>
+
+            <div class="probability-bar">
+              <div class="probability-fill" id="probabilityFill"></div>
+            </div>
+
+            <div class="probability-text">
+              Failure Probability:
+              <span id="failureProbability">-</span>
+            </div>
+          </div>
+
+          <!-- Chart -->
+
+          <div class="chart-container">
+            <canvas id="probabilityChart"></canvas>
+          </div>
+
+          <!-- Explanation -->
+
+          <div class="explanation-section">
+            <h3>Top Contributing Factors</h3>
+
+            <div id="topFactors"></div>
+          </div>
+
+          <!-- Recommendations -->
+
+          <div class="recommendations-section">
+            <h3>Maintenance Recommendations</h3>
+
+            <ul id="recommendations"></ul>
+          </div>
+
+          <div class="metadata">
+            <p>Inference Time: <span id="inferenceTime">-</span> ms</p>
+            <p>Timestamp: <span id="timestamp">-</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- HISTORY -->
+
+      <div class="card">
+        <h2>Prediction History</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Machine ID</th>
+              <th>Risk Level</th>
+              <th>Failure Prob.</th>
+              <th>Temperature</th>
+              <th>Pressure</th>
+              <th>Vibration</th>
+            </tr>
+          </thead>
+
+          <tbody id="historyBody"></tbody>
+        </table>
+      </div>
+
+      <!-- SHAP PLOTS -->
+
+      <div class="card" id="plotsImages">
+        <h2>Model Explainability Plots</h2>
+
+        <div class="plot-card">
+          <h3>Model Comparison Plot</h3>
+
+          <img
+            src="{{ url_for('static', filename='plots/model_comparison.png') }}"
+            style="width: 100%; margin-bottom: 30px"
+          />
+        </div>
+
+        <div class="plot-card">
+          <h3>SHAP Summary Plot</h3>
+
+          <img
+            src="{{ url_for('static', filename='plots/shap_summary.png') }}"
+            style="width: 100%; margin-bottom: 30px"
+          />
+        </div>
+
+        <div class="plot-card">
+          <h3>Feature Importance</h3>
+
+          <img
+            src="{{ url_for('static', filename='plots/feature_importance.png') }}"
+            style="width: 100%; margin-bottom: 30px"
+          />
+        </div>
+
+        <div class="plot-card">
+          <h3>SHAP Waterfall Plot</h3>
+
+          <img
+            src="{{ url_for('static', filename='plots/shap_waterfall.png') }}"
+            style="width: 100%"
+          />
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
