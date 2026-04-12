@@ -1,4 +1,4 @@
-# 🛠️ SmartMaint AI — Predictive Maintenance System
+# SmartMaint AI — Predictive Maintenance System
 
 SmartMaint AI is an end-to-end Machine Learning-based Predictive Maintenance System designed to forecast equipment failures before they occur. The system processes industrial data, trains predictive models, generates explainable insights using SHAP, and deploys predictions through a Flask-based web interface.
 
@@ -6,21 +6,21 @@ This project demonstrates a complete production-style ML workflow including data
 
 ---
 
-# 🚀 Features
+# Features
 
-✅ End-to-End Machine Learning Pipeline
-✅ Predictive Maintenance Failure Detection
-✅ Data Preprocessing & Feature Engineering
-✅ Automated Model Training
-✅ SHAP-Based Model Explainability
-✅ Visualization of Feature Importance
-✅ Flask Web Interface for Predictions
-✅ Structured Data Pipeline
-✅ Report and Plot Generation
+- End-to-End Machine Learning Pipeline
+- Predictive Maintenance Failure Detection
+- Data Preprocessing & Feature Engineering
+- Automated Model Training
+- SHAP-Based Model Explainability
+- Visualization of Feature Importance
+- Flask Web Interface for Predictions
+- Structured Data Pipeline
+- Report and Plot Generation
 
 ---
 
-# 🧠 Problem Statement
+# Problem Statement
 
 Industrial equipment failures often lead to unexpected downtime, financial loss, and safety risks. Traditional maintenance approaches rely on fixed schedules rather than real-time predictions.
 
@@ -28,7 +28,7 @@ SmartMaint AI solves this problem using machine learning models that analyze equ
 
 ---
 
-# 🏗️ System Architecture
+# System Architecture
 
 ```
 Raw Data
@@ -60,7 +60,7 @@ Web Interface (HTML/CSS/JS)
 
 ---
 
-# 📁 Project Structure
+# Project Structure
 
 ```
 SmartMaint_AI/
@@ -102,7 +102,7 @@ SmartMaint_AI/
 
 ---
 
-# ⚙️ Installation & Setup
+# Installation & Setup
 
 ## Step 1 — Clone Repository
 
@@ -139,7 +139,7 @@ pip install -r requirements.txt
 
 ---
 
-# ▶️ Running the Project
+# Running the Project
 
 ## Run Full ML Pipeline
 
@@ -171,7 +171,7 @@ http://127.0.0.1:5000
 
 ---
 
-# 📊 Model Explainability
+# Model Explainability
 
 This project uses **SHAP (SHapley Additive exPlanations)** to interpret model predictions.
 
@@ -185,7 +185,7 @@ These visualizations help understand how different features influence equipment 
 
 ---
 
-# 📈 Outputs Generated
+# Outputs Generated
 
 After running the pipeline:
 
@@ -204,7 +204,7 @@ Includes:
 
 ---
 
-# 🧪 Technologies Used
+# Technologies Used
 
 ## Programming
 
@@ -231,19 +231,19 @@ Includes:
 
 ---
 
-# 📊 Use Cases
+# Use Cases
 
 SmartMaint AI can be applied in:
 
-🏭 Manufacturing Industries
-⚙️ Industrial Equipment Monitoring
-🚂 Transportation Systems
-⚡ Power Plants
-🏢 Smart Infrastructure
+Manufacturing Industries
+Industrial Equipment Monitoring
+Transportation Systems
+Power Plants
+Smart Infrastructure
 
 ---
 
-# 🎯 Future Improvements
+# Future Improvements
 
 * Add real-time sensor data streaming
 * Deploy using Docker
@@ -254,7 +254,7 @@ SmartMaint AI can be applied in:
 * Add user authentication
 ---
 
-# 📜 License
+# License
 
 This project is intended for educational and demonstration purposes.
 
